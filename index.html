@@ -22,7 +22,7 @@
       position: relative;
     }
     .logo-img {
-      height: 120px;
+      height: 140px;
       margin-bottom: 15px;
     }
     .clock {
@@ -208,7 +208,7 @@
       const timeString = now.toLocaleTimeString('ar-EG', options);
       const dateString = now.toLocaleDateString('ar-EG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
       document.getElementById('localTime').textContent = `الساعة الآن: ${timeString}`;
-      document.getElementById('dateToday').innerHTML = `<i class="fa-regular fa-calendar"></i> 📅 ${dateString}`;
+      document.getElementById('dateToday').innerHTML = `<i class="fa-regular fa-calendar"></i>  ${dateString}`;
     }
     setInterval(updateClock, 1000);
     updateClock();
