@@ -22,15 +22,8 @@
       position: relative;
     }
     .logo-img {
-      height: 80px;
-      margin-bottom: 10px;
-    }
-    .flag-img {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      height: 40px;
-      border-radius: 4px;
+      height: 120px;
+      margin-bottom: 15px;
     }
     .clock {
       margin-top: 10px;
@@ -139,25 +132,20 @@
   </style>
 </head>
 <body>
-
-  <!-- الهيدر مع الشعار الجديد -->
   <header>
     <img src="alshaib.png" alt="شعار ديار آل شعيب" class="logo-img" />
     <h1>صفحة ديار آل شُعيب الخريطة</h1>
     <p>خدمات مجتمعية وتواصل اجتماعي للمنطقة</p>
-    <img src="fs4.foto2.png" class="flag-img" alt="صورة">
     <div class="clock" id="localTime">الساعة الآن...</div>
     <div class="calendar" id="dateToday">اليوم...</div>
   </header>
 
-  <!-- الشريط المتحرك -->
   <div class="ticker-bar">
     <div class="ticker-content">
       <i class="fa-solid fa-newspaper"></i> مرحباً بكم في صفحة ديار آل شعيب – تابع الأخبار، التبرعات، الشكاوى، والاقتراحات!
     </div>
   </div>
 
-  <!-- النموذج الرئيسي -->
   <form class="main-form" id="serviceRequestForm">
     <h4 class="mb-3 text-center">نموذج تقديم الشكوى أو الطلب</h4>
     <input type="text" placeholder="الاسم" required class="form-control my-2">
@@ -167,7 +155,6 @@
     <button type="button" class="btn btn-toggle-sidebar" onclick="toggleSidebar()">📋 القائمة الجانبية</button>
   </form>
 
-  <!-- القائمة الجانبية -->
   <div class="sidebar hidden" id="sidebar">
     <button class="sidebar-close" onclick="toggleSidebar()">×</button>
     <h5><i class="fas fa-hand-holding-heart"></i> التبرعات</h5>
@@ -189,12 +176,10 @@
     <a href="https://www.facebook.com/share/174m8yzqdG/" target="_blank"><i class="fab fa-facebook"></i> ديار آل شعيب الخريطة</a>
   </div>
 
-  <!-- الفوتر -->
   <footer>
     جميع الحقوق محفوظة © صفحة ديار آل شُعيب الخريطة 2025
   </footer>
 
-  <!-- الجافاسكربت -->
   <script>
     function toggleSidebar() {
       document.getElementById('sidebar').classList.toggle('hidden');
@@ -208,10 +193,8 @@
       document.getElementById('localTime').textContent = `الساعة الآن: ${timeString}`;
       document.getElementById('dateToday').textContent = `📅 ${dateString}`;
     }
-
     setInterval(updateClock, 1000);
     updateClock();
   </script>
-
 </body>
 </html>
