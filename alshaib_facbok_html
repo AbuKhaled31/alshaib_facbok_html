@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>صفحة ديار آل شُعيب الخريطة</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: #f7f9fa;
+      color: #1d5c57;
+    }
+    header {
+      background: linear-gradient(90deg, #1d5c57, #134e4a);
+      color: white;
+      padding: 40px 20px 20px 20px;
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+    }
+    .logo-img {
+      height: 80px;
+      margin-bottom: 10px;
+    }
+    .flag-img {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      height: 40px;
+      border-radius: 4px;
+    }
+    .clock {
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
+    .calendar {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #fff;
+    }
+    .ticker-bar {
+      background-color: #e6f0ee;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      margin: 22px auto 10px auto;
+      font-size: 1.1rem;
+      max-width: 600px;
+      text-align: center;
+      height: 44px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .ticker-content {
+      white-space: nowrap;
+      animation: scroll-right 13s linear infinite;
+      direction: rtl;
+      font-weight: 500;
+    }
+    @keyframes scroll-right {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .main-form {
+      background: #fff;
+      border-radius: 15px;
+      padding: 30px 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.13);
+      max-width: 450px;
+      margin: 30px auto;
+    }
+    .form-control, .btn {
+      font-size: 1.1rem;
+    }
+    .btn-success {
+      width: 100%;
+      margin-top: 10px;
+    }
+    .btn-toggle-sidebar {
+      display: block;
+      margin: 20px auto 0 auto;
+      background-color: #134e4a;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+    }
+    footer {
+      background: linear-gradient(90deg, #1d5c57, #134e4a);
+      color: white;
+      padding: 18px;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 280px;
+      height: 100%;
+      background-color: #e6f0ee;
+      padding: 20px;
+      overflow-y: auto;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+      transition: right 0.3s ease-in-out;
+      z-index: 999;
+    }
+    .sidebar.hidden {
+      right: -300px;
+    }
+    .sidebar-close {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #134e4a;
+      cursor: pointer;
+    }
+    .sidebar h5 {
+      margin-top: 30px;
+      color: #134e4a;
+    }
+    .sidebar a {
+      display: block;
+      margin: 5px 0;
+      color: #1d5c57;
+      text-decoration: none;
+    }
+    .sidebar i {
+      margin-left: 6px;
+      color: #134e4a;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="fs4.foto1.png" alt="شعار الموقع" class="logo-img" />
+    <h1>صفحة ديار آل شُعيب الخريطة</h1>
+    <p>خدمات مجتمعية وتواصل اجتماعي للمنطقة</p>
+    <img src="fs4.foto2.png" class="flag-img" alt="صورة">
+    <div class="clock" id="localTime">الساعة الآن...</div>
+    <div class="calendar" id="dateToday">اليوم...</div>
+  </header>
+
+  <div class="ticker-bar">
+    <div class="ticker-content">
+      <i class="fa-solid fa-newspaper"></i> مرحباً بكم في صفحة ديار آل شعيب – تابع الأخبار، التبرعات، الشكاوى، والاقتراحات!
+    </div>
+  </div>
+
+  <form class="main-form" id="serviceRequestForm">
+    <h4 class="mb-3 text-center">نموذج تقديم الشكوى أو الطلب</h4>
+    <input type="text" placeholder="الاسم" required class="form-control my-2">
+    <input type="text" placeholder="رقم الهاتف" required class="form-control my-2">
+    <textarea placeholder="اكتب الشكوى أو الاقتراح بالتفصيل" required class="form-control my-2"></textarea>
+    <button type="submit" class="btn btn-success">إرسال</button>
+    <button type="button" class="btn btn-toggle-sidebar" onclick="toggleSidebar()">📋 القائمة الجانبية</button>
+  </form>
+
+  <div class="sidebar hidden" id="sidebar">
+    <button class="sidebar-close" onclick="toggleSidebar()">×</button>
+    <h5><i class="fas fa-hand-holding-heart"></i> التبرعات</h5>
+    <a href="#"><i class="fas fa-money-bill"></i> دعم الصفحة</a>
+
+    <h5><i class="fas fa-bullhorn"></i> الأخبار الأسبوعية</h5>
+    <a href="#"><i class="fas fa-newspaper"></i> نشرة أخبار القبيلة</a>
+
+    <h5><i class="fas fa-comment-dots"></i> اقتراحات</h5>
+    <a href="#"><i class="fas fa-lightbulb"></i> أرسل اقتراح</a>
+
+    <h5><i class="fas fa-exclamation-triangle"></i> شكاوى</h5>
+    <a href="#"><i class="fas fa-envelope"></i> قدم شكوى</a>
+
+    <h5><i class="fas fa-phone"></i> تواصل عبر الهاتف</h5>
+    <a href="tel:000000000"><i class="fas fa-phone"></i> 000000000</a>
+
+    <h5><i class="fab fa-facebook"></i> صفحات فيسبوك</h5>
+    <a href="https://www.facebook.com/share/174m8yzqdG/" target="_blank"><i class="fab fa-facebook"></i> ديار آل شعيب الخريطة</a>
+  </div>
+
+  <footer>
+    جميع الحقوق محفوظة © صفحة ديار آل شُعيب الخريطة 2025
+  </footer>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('hidden');
+    }
+
+    function updateClock() {
+      const now = new Date();
+      const options = { hour: 'numeric', minute: 'numeric', second: 'numeric' };
+      const timeString = now.toLocaleTimeString('ar-EG', options);
+      const dateString = now.toLocaleDateString('ar-EG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      document.getElementById('localTime').textContent = `الساعة الآن: ${timeString}`;
+      document.getElementById('dateToday').textContent = `📅 ${dateString}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
